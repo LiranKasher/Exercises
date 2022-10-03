@@ -1,1 +1,1 @@
-# BASH Exercises
+# BASH exercises
