@@ -1,1 +1,1 @@
-Write a program that take a command line argument for directory path and remove execution privileges from all users for all files in that directory and subdirectories (without changing directories permissions).
+Write a program that takes a command line argument for directory path. Remove execution privileges from all users, for all files, in that directory and subdirectories. Do all that without changing directories ownership.
