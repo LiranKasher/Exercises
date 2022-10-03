@@ -1,5 +1,5 @@
 ﻿# Set the default Azure subscription (Run only once)
-# az account set --subscription "{subscription_name_here}"
+# az account set --subscription "{put_subscription_name_here}"
 
 # Start a login session
 az login
@@ -24,7 +24,7 @@ If ($vm_count -le $max_vm_count)
     If (0 -ne $vm_count % 2)
     {
         # Create all VMs with two disks
-        az vmss create --resource-group candidate-liran --name $name_prefix --image Win2019Datacenter --authentication-type password --admin-username azureuser --admin-password C@mi1y0!Test --os-disk-size-gb 130 --data-disk-sizes-gb 70 --public-ip-per-vm --instance-count $vm_count
+        az vmss create --resource-group test-liran --name $name_prefix --image Win2019Datacenter --authentication-type password --admin-username azureuser --admin-password ChangeThisPassword! --os-disk-size-gb 130 --data-disk-sizes-gb 70 --public-ip-per-vm --instance-count $vm_count
     }
     # In case the amount of requested VMs is even
     Else
@@ -34,10 +34,10 @@ If ($vm_count -le $max_vm_count)
         $second_half = @(($half_vm_count[-1]+1)..$vm_count)
 
         # Create half of the VMs with the shutdwon tag and only one disk
-        az vmss create --resource-group candidate-liran --name $name_prefix --image Win2019Datacenter --authentication-type password --admin-username azureuser --admin-password C@mi1y0!Test --tags Shutdown --os-disk-size-gb 130 --public-ip-per-vm --instance-count $half_vm_count.Count
+        az vmss create --resource-group test-liran --name $name_prefix --image Win2019Datacenter --authentication-type password --admin-username azureuser --admin-password ChangeThisPassword! --tags Shutdown --os-disk-size-gb 130 --public-ip-per-vm --instance-count $half_vm_count.Count
 
         # Create half of the VMs with two disks
-        az vmss create --resource-group candidate-liran --name $name_prefix --image Win2019Datacenter --authentication-type password --admin-username azureuser --admin-password C@mi1y0!Test --os-disk-size-gb 130 --data-disk-sizes-gb 70 --public-ip-per-vm --instance-count $second_half.Count
+        az vmss create --resource-group test-liran --name $name_prefix --image Win2019Datacenter --authentication-type password --admin-username azureuser --admin-password ChangeThisPassword! --os-disk-size-gb 130 --data-disk-sizes-gb 70 --public-ip-per-vm --instance-count $second_half.Count
     }
 }
 
